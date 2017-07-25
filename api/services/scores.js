@@ -1,6 +1,6 @@
 'use strict';
 
-var BoardsService = require('./boards');
+var BoardsService = require('./users');
 
 class ScoresService {
     constructor() {

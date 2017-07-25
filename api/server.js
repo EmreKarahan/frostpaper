@@ -104,16 +104,16 @@ var p3 = PlayersService.addPlayer({
   lastName: 'Danger',
   displayName: 'DD83'
 });
-var BoardsService = require('./services/boards');
-var b1 = BoardsService.addBoard('Total Score', 1);
-var b2 = BoardsService.addBoard('Times Died', 0);
-var ScoresService = require('./services/scores');
-ScoresService.addScore(b1.id, p1.id, 3000);
-ScoresService.addScore(b1.id, p2.id, 2345);
-ScoresService.addScore(b1.id, p3.id, 15238);
-ScoresService.addScore(b2.id, p1.id, 33);
-ScoresService.addScore(b2.id, p2.id, 7);
-ScoresService.addScore(b2.id, p3.id, 67);
+// var BoardsService = require('./services/boards');
+// var b1 = BoardsService.addBoard('Total Score', 1);
+// var b2 = BoardsService.addBoard('Times Died', 0);
+// var ScoresService = require('./services/scores');
+// ScoresService.addScore(b1.id, p1.id, 3000);
+// ScoresService.addScore(b1.id, p2.id, 2345);
+// ScoresService.addScore(b1.id, p3.id, 15238);
+// ScoresService.addScore(b2.id, p1.id, 33);
+// ScoresService.addScore(b2.id, p2.id, 7);
+// ScoresService.addScore(b2.id, p3.id, 67);
 
 
 // start the server
