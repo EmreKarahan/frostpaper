@@ -16,13 +16,13 @@ class PlayersController {
     }
 
     getPlayers(req, res) {
-        var players = PlayersService.getPlayers();
-        res.send(players);
-        // res.render('web/home/index', {
-        //     title: 'aa',
-        //     root: req.root,
-        //     layout: 'blogLayout.hbs'
-        // });
+        // var players = PlayersService.getPlayers();
+        // res.send(players);
+        res.render('web/home/index', {
+            title: 'aa',
+            root: req.root,
+            layout: 'blogLayout.hbs'
+        });
     }
 
     getSinglePlayer(req, res) {

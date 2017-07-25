@@ -7,8 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var register = require('./config/controllerRegister');
 
-//const WEB_CONTROLLER_PATH = '../controllers';
-const API_CONTROLLER_PATH = '../controllers';
+const WEB_CONTROLLER_PATH = '../controllers';
+const API_CONTROLLER_PATH = '../api';
 
 
 
@@ -66,7 +66,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //registerControllers(WEB_CONTROLLER_PATH, app);
 //registerControllers(API_CONTROLLER_PATH, apiV1);
 
-//register.register(WEB_CONTROLLER_PATH, app);
+register.register(WEB_CONTROLLER_PATH, app);
 register.register(API_CONTROLLER_PATH, apiV1);
 
 
@@ -159,4 +159,4 @@ var server = app.listen(3000, function () {
 
 //         console.log('listening at http://%s:%s', host, port);
 //     });
-// });m
+// });
