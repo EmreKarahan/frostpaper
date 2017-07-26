@@ -1,57 +1,29 @@
-import React from 'react';
-import axios from 'axios';
-import {FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
+// ./src/components/App.js
+import React  from 'react';
+import {Link} from 'react-router';
 
-export default function app() {
-    return (
-        <div>
-            <h1>JSX</h1>
-            <form>
-                <FormGroup
-                    controlId="formBasicText">
-                    <ControlLabel>Working example with validation</ControlLabel>
-                    <FormControl
-                        type="text"                       
-                        placeholder="Enter text"                      
-                    />
-                    <FormControl.Feedback />
-                    <HelpBlock>Validation is based on string length.</HelpBlock>
-                </FormGroup>
-            </form>
-            <FirstName />
+const App = (props) => {
+  return (
+    <div className="container">
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <a className="navbar-brand" href="#">Scotch Books</a>
+          </div>
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul className="nav navbar-nav">
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/about">About</Link></li>
+              <li><Link to="/books">Book</Link></li>
+              <li><Link to="/cart">Cart</Link></li>
+            </ul>
+          </div>
         </div>
-    );
-}
+      </nav>
+      {/* Each smaller components */}
+      {props.children}
+    </div>
+  );
+};
 
-
-export class FirstName extends React.Component {
-
-
-    constructor() {
-        super();
-        this.state = { posts: null }
-    }
-
-    componentDidMount() {
-        axios.get(
-            'http://date.jsontest.com/',
-        ).then(res => {
-            console.log(res.data);
-            const posts = res.data;
-            this.setState({ posts });
-        });
-    }
-
-    render() {
-        if (this.state.posts) {
-            return (
-                <div>
-
-                    <p>{this.state.posts.time}</p>
-
-                </div>
-            );
-        }
-        return <div>Loading...</div>;
-    }
-}
+export default App

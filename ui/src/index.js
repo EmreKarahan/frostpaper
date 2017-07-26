@@ -1,24 +1,19 @@
+// ./src/index.js
+import 'babel-polyfill';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/app';
+import { Provider } from 'react-redux';
+import { render } from 'react-dom';
+import { Router, browserHistory } from 'react-router';
+import routes from './routes';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-// import * as $ from 'jquery';
-// import * as JQuery from 'jquery';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link
-} from 'react-router-dom'
+import configureStore from './store/configureStore';
 
-const container = document.getElementById('container');
-//ReactDOM.render(<App />, container);
+const store = configureStore();
 
-
-
-ReactDOM.render((
-    <Router>
-        <Route path="/login" component={App} />
-        {/* <Route path="/users" component={Users} />
-    <Route path="/widgets" component={Widgets} /> */}
-    </Router>
-), container);
+render(
+  <Provider store={store}>
+    <Router routes={routes} history={browserHistory} />
+  </Provider>,
+  document.getElementById('app')
+);

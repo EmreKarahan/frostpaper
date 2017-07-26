@@ -35,11 +35,11 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('*', (req, res) => {
     console.log('Serving ', req.url);
-    res.sendFile(__dirname + '/dist/app.html');
+    res.sendFile(__dirname + '/dist/index.html');
 });
 
 //app.listen(port, () => console.log('Listening on port', port));
