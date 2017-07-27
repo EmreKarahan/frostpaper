@@ -1,4 +1,18 @@
+import axios from 'axios';
+
+//Post list
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
+export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
+export const RESET_POSTS = 'RESET_POSTS';
+
+
+
 // ./src/actions/bookActions.js
+
+
+const ROOT_URL = location.href.indexOf('localhost') > 0 ? 'http://localhost:3000/api' : '/api';
+
 export const createBook = (book) => {
   // Return action
   return {
@@ -9,12 +23,45 @@ export const createBook = (book) => {
   }
 };
 
+export function fetchBooks() {
+  const books = axios({
+    method: 'get',
+    url: `http://headers.jsontest.com/`,
+    headers: []
+  });
 
-export const addUserToHome = (houseCode, userId) => {
   return {
-    types: ['ADD_USER', 'ADD_USER_SUCCESS', 'ADD_USER_FAILURE'],
-    promise: request.put(BACKEND_URL + '/' + houseCode, {
-      userId: userId
-    })
-  }
+    type: 'FETCH_BOOKS',
+    books: books
+  };
 }
+
+
+
+export function fetchPosts() {
+  const request = axios({
+    method: 'get',
+    url: `${ROOT_URL}/posts`,
+    headers: []
+  });
+
+  return {
+    type: FETCH_POSTS,
+    payload: request
+  };
+}
+
+export function fetchPostsSuccess(posts) {
+  return {
+    type: FETCH_POSTS_SUCCESS,
+    payload: posts
+  };
+}
+
+export function fetchPostsFailure(error) {
+  return {
+    type: FETCH_POSTS_FAILURE,
+    payload: error
+  };
+}
+

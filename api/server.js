@@ -160,3 +160,10 @@ var server = app.listen(3000, function () {
 //         console.log('listening at http://%s:%s', host, port);
 //     });
 // });m
+
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/posts');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('DB connected!');
+});

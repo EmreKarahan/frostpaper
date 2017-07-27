@@ -1,6 +1,7 @@
 'use strict';
 
-var uuid = require('node-uuid');
+var uuid = require('node-uuid'),
+    mongoose = require('mongoose');
 
 class PlayersService {
     constructor() {
@@ -10,6 +11,8 @@ class PlayersService {
     getPlayers() {
         return this.players;
     }
+
+
 
     getSinglePlayer(playerId) {
         var player = this.players.filter(p => p.id === playerId)[0];
