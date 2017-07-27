@@ -5,6 +5,7 @@ const fs = require('fs');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var dotenv = require('dotenv');
 //var register = require('./config/controllerRegister');
 
 // const WEB_CONTROLLER_PATH = '../controllers';
@@ -13,6 +14,14 @@ var bodyParser = require('body-parser');
 
 
 const app = express();
+
+
+
+//load enviorement variable
+dotenv.load();
+
+
+
 const port = process.env.PORT || 8080;
 
 
