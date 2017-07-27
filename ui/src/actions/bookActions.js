@@ -26,13 +26,13 @@ export const createBook = (book) => {
 export function fetchBooks() {
   const books = axios({
     method: 'get',
-    url: `http://headers.jsontest.com/`,
+    url: `http://localhost:5000/api/values`,
     headers: []
-  });
+  });  
 
   return {
     type: 'FETCH_BOOKS',
-    books: books
+    books: booksno
   };
 }
 

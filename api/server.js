@@ -1,11 +1,13 @@
-const express = require('express');
-var exphbs = require('express-handlebars');
-const path = require('path');
-const fs = require('fs');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var register = require('./config/controllerRegister');
+const express = require('express'),
+  exphbs = require('express-handlebars'),
+  path = require('path'),
+  fs = require('fs'),
+  logger = require('morgan'),
+  cookieParser = require('cookie-parser'),
+  bodyParser = require('body-parser'),
+  mongoose = require('mongoose'),
+  register = require('./config/controllerRegister'),
+  dotenv = require('dotenv');
 
 //const WEB_CONTROLLER_PATH = '../controllers';
 const API_CONTROLLER_PATH = '../controllers';
@@ -15,6 +17,8 @@ const API_CONTROLLER_PATH = '../controllers';
 const app = express();
 const port = process.env.PORT || 8080;
 
+//load enviorement variable
+dotenv.load();
 
 app.set('port', port);
 //app.use(express.static(path.join(__dirname, './dist')));
@@ -57,11 +61,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
- var apiRouter = express.Router();
- app.use('/api', apiRouter);
+var apiRouter = express.Router();
+app.use('/api', apiRouter);
 
- var apiV1 = express.Router();
- apiRouter.use('/v1', apiV1);
+var apiV1 = express.Router();
+apiRouter.use('/v1', apiV1);
 
 //registerControllers(WEB_CONTROLLER_PATH, app);
 //registerControllers(API_CONTROLLER_PATH, apiV1);
@@ -161,9 +165,9 @@ var server = app.listen(3000, function () {
 //     });
 // });m
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/posts');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('DB connected!');
-});
+// mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/posts');
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function () {
+//   console.log('DB connected!');
+// });

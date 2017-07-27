@@ -1,6 +1,8 @@
 'use strict';
 
-var PlayersService = require('../services/players');
+var PlayersService = require('../services/players'),
+    axios = require('axios');
+
 
 class PlayersController {
     constructor(router) {
@@ -16,13 +18,13 @@ class PlayersController {
     }
 
     getPlayers(req, res) {
-        var players = PlayersService.getPlayers();
-        res.send(players);
-        // res.render('web/home/index', {
-        //     title: 'aa',
-        //     root: req.root,
-        //     layout: 'blogLayout.hbs'
-        // });
+        axios.get('https://dog.ceo/api/breeds/list/all')
+            .then(function (response) {
+                console.log(response.data);
+                res.send(response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
     }
 
     getSinglePlayer(req, res) {
