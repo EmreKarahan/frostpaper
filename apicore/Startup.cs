@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace apicore
 {
-    public class Startup
+    public partial class Startup
     {
         public Startup(IHostingEnvironment env)
         {
